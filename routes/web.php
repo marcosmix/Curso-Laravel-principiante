@@ -1,22 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NuevoControlador;
 use App\Http\Controllers\cursoLaravel\HomeController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\dashboard\DashboardController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-Route::get('/',[HomeController::class,'GetHome']);
+Route::get('/',[HomeController::class,'GetHome'])->name('home');
 
+Route::get('/dasboard',[DashboardController::class,'index'])->name('dashboard');

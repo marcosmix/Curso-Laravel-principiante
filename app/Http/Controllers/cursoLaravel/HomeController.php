@@ -11,12 +11,12 @@ class HomeController extends Controller
      public function GetHome(){
         
         $personas=FormularioController::ObtenerDatosPersonas();
-        dump($personas);
+        //dump($personas);
         
         $dato=array_push($personas,['Marcos',30]);
 
-        dump($dato);
-        return view('welcome');
+       // dump($dato);
+        return view('index');
         //echo 'Hola San Juan Tec';
 
      }

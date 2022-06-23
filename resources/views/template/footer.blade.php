@@ -1,6 +1,6 @@
 {{-- @extends('base')
 @section('footer') --}}
     <footer>
-        San Juan Tec 2022
+        <p> de developers Fundamentos Laravel - San Juan Tec 2022</p>
     </footer>
 {{-- @endsection --}}

@@ -1,4 +1,4 @@
 @extends('template/base')
-@section('content')
+@section('lo_que_cambia')
     Bienvenidos
 @endsection

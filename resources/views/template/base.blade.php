@@ -7,10 +7,11 @@
     <title>San Juan Tec</title>
 </head>
 <body>
+   
     @include('template/header')
 
-    @yield('content')
-
+    @yield('lo_que_cambia')
+    
     @include('template/footer')
 </body>
 </html>

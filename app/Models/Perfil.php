@@ -9,6 +9,8 @@ class Perfil extends Model
 {
     use HasFactory;
 
+    protected $guarded=[];
+
     public function Gastos() {
         return $this->hasMany('App\Models\Gasto');
     }

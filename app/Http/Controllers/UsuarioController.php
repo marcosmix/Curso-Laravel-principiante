@@ -10,37 +10,42 @@ class UsuarioController extends Controller
 {
    
     public function index(){
-        $listado_usuarios=Perfil::all();
+        $perfiles=Perfil::all();
 
-        return view( 'perfiles.index' , compact('listado_usuarios'));
+        return view( 'perfiles.index' , compact('perfiles'));
     }
 
 
     public function create(){
-    
+        return view('perfiles.create');
     }
 
     public function store(Request $request){
-
+        $nuevo_perfil=new Perfil;
+        $nuevo_perfil->create($request->all());
+        return redirect(route('perfiles.index'));
     }
 
     public function show(Perfil $perfil){
-        //
+        
     }
 
     
-    public function edit(Perfil $perfil){
-        //
+    public function edit($perfil_id){
+        $perfil = Perfil::find($perfil_id);
+        return view('perfiles.edit',compact('perfil'));
     }
 
-    public function update(Request $request, Perfil $perfil)
-    {
-        //
+    public function update(Request $request,$perfil_id){
+        $perfil = Perfil::find($perfil_id);
+        $perfil->update($request->all());
+        return redirect(route('perfiles.index'));
     }
 
    
-    public function destroy(Perfil $perfil)
-    {
-        //
+    public function destroy($perfil_id){
+        $perfil=Perfil::find($perfil_id);
+        $perfil->delete();
+        return redirect(route('perfiles.index'));
     }
 }

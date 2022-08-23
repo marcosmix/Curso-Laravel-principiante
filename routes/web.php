@@ -16,6 +16,6 @@ Route::resource('categorias',CategoriasController::class);
 Route::resource('etiquetas',EtiquetasController::class);
 Route::resource('gastos',GastosController::class);
 
-Route::resource('usuarios',UsuarioController::class);
+Route::resource('perfiles',UsuarioController::class);
 
 Route::get('testUsuario',[UsuarioController::class,'test']);

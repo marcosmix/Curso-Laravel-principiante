@@ -3,20 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NuevoControlador;
 use App\Http\Controllers\cursoLaravel\HomeController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Models\Etiqueta;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\EtiquetasController;
+use App\Http\Controllers\GastosController;
 
-Route::get('/',[HomeController::class,'GetHome']);
+use App\Http\Controllers\UsuarioController;
 
+Route::get('/',[HomeController::class,'GetHome'])->name('Home');
+Route::resource('categorias',CategoriasController::class);
+Route::resource('etiquetas',EtiquetasController::class);
+Route::resource('gastos',GastosController::class);
+
+Route::resource('usuarios',UsuarioController::class);
+
+Route::get('testUsuario',[UsuarioController::class,'test']);

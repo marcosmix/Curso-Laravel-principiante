@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 use App\Models\etiquetas;
 use App\Models\Gasto;
 use App\Models\Perfil;
-
+use App\Models\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -21,14 +21,14 @@ class DatabaseSeeder extends Seeder
     {
 
         
-        Etiqueta::factory(15)->create();
-        Categoria::factory(5)->create();
-        Perfil::factory(3)->create();
+        // Etiqueta::factory(15)->create();
+        // Categoria::factory(5)->create();
+        // Perfil::factory(3)->create();
        
-        //\App\Models\User::factory(10)->create();
-        //\App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::create([
+             'name' => 'admin',
+             'password'=>bcrypt('1234'),
+             'email'=>"null"
+         ]);
     }
 }

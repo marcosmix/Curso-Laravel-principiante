@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Etiqueta;
 use App\Models\Gasto;
+use App\Models\Item;
 use App\Models\Perfil;
 use Illuminate\Http\Request;
 
@@ -20,22 +22,39 @@ class GastosController extends Controller
        
         $categorias=Categoria::all();
         $perfiles=Perfil::all();
+        $etiquetas=Etiqueta::all();
 
-        return view('Gastos.create',compact('categorias','perfiles'));
+        return view('Gastos.create',compact('categorias','perfiles','etiquetas'));
     }
 
     public function store(Request $request){
-        $gasto=new Gasto();
-        
-        
-        if($request->fijo=='on')
-            $request->fijo = 1;
-        else
-            $request->fijo = 0;
-        
 
-        $gasto->create($request->all());
+        $gasto=new Gasto();
+
+        $gasto->created([
+            'detalle'=>$request->detalle,
+            'importe'=>$request->importe,
+            'fecha'=>$request->fecha,
+            'fijo'=>isset($request->fijo)?true:false,
+            'id_categoria'=>$request->id_categoria,
+            'id_perfil'=>$request->id_perfil,
+        ]);
         
+       
+       $gasto_id=Gasto::latest('id')->first()->id;
+      
+       foreach($request->nombre_item as $key=>$item){
+            if(isset($item)){
+              
+                $item=new Item;
+                $item->create([   'nombre' => $item,
+                                 'importe' => $request->importe_item[$key],
+                                'id_gasto' => $gasto_id] );
+                $item=null;
+            }
+        }
+        // dd($request->etiquetas);
+        $gasto->etiquetas()->attach([1,2,3]);
         return redirect()->back();
     }
 

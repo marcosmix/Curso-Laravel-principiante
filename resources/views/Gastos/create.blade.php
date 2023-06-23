@@ -1,8 +1,8 @@
 <form action="{{route('gastos.store')}}" method="post">
     @csrf
-    <input type="text" name="detalle" id="">
+    <input type="text" name="detalle" id="" placeholder="Detalle del gasto">
 <br>
-    <input type="number" name="importe" step="0.01" id="">
+    <input type="number" name="importe" step="0.01" id="" >
 <br>
 
     <input type="date" name="fecha" id="">
@@ -35,7 +35,31 @@
         @endforeach
 
     </select>
+    <br><br>
+    <div>
+        @foreach ($etiquetas as $key=>$etiqueta)
+        <br>
+            <label for="etiquetas[{{$key}}]">{{$etiqueta->nombre}}</label>
+            <input type="checkbox" name="etiquetas[{{$key}}]" id="etiquetas[{{$key}}]" value="{{$etiqueta->id}}">
+        @endforeach
+    </div>
+        
 <br>
-
+<br>
+<div>
+    <input type="name" name="nombre_item[]" placeholder="Nombre de item">
+    <input type="number" step=0.1 name="importe_item[]" placeholder="Importe">
+</div>
+<br>
+<div>
+    <input type="name" name="nombre_item[]" placeholder="Nombre de item">
+    <input type="number" step=0.1 name="importe_item[]" placeholder="Importe">
+</div>
+<br>
+<div>
+    <input type="name" name="nombre_item[]" placeholder="Nombre de item">
+    <input type="number" step=0.1 name="importe_item[]" placeholder="Importe">
+</div>
+<br><br>
     <input type="submit" value="Guardar">
 </form>

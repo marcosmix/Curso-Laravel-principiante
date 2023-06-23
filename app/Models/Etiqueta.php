@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Etiqueta extends Model
 {
     use HasFactory;
-    protected $fillable=['nombre'];
+    protected $guarded=[];
 
     public function gastos(){
-        return $this->belongsToMany('App\Models\Gasto');
+        return $this->belongsToMany('App\Models\Gasto','gasto_id','id');
     }
 }
